@@ -9,7 +9,7 @@ load_dotenv()
 tok = os.getenv("HF_TOKEN")
 
 def getLLamaresponse(input_text, no_words, blog_style):
-    llm = HuggingFaceEndpoint(repo_id="mistralai/Mistral-7B-Instruct-v0.3", max_length=64, temperature=0.5, Token=tok)
+    llm = HuggingFaceEndpoint(repo_id="meta-llama/Llama-2-7b-hf", max_length=64, temperature=0.5, Token=tok)
     
     template = """
         Write a blog for {blog_style} job profile for a topic {input_text}
