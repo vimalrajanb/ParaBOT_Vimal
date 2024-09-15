@@ -9,7 +9,7 @@ load_dotenv()
 tok = os.getenv("HF_TOKEN")
 
 def getLLamaresponse(input_text, no_words, blog_style):
-    llm = HuggingFaceEndpoint(repo_id="meta-llama/Llama-2-7b-hf", max_length=64, temperature=0.5, Token=tok)
+    llm = HuggingFaceEndpoint(repo_id="mistralai/Mistral-7B-Instruct-v0.3", max_length=64, temperature=0.5, Token=tok)
     
     template = """
         Write a blog for {blog_style} job profile for a topic {input_text}
@@ -23,10 +23,9 @@ def getLLamaresponse(input_text, no_words, blog_style):
     print(response)
     return response
 
-# Set up the page with a background and title
-st.set_page_config(page_title="Vimal's ParaBOT", page_icon='🤖', layout='centered', initial_sidebar_state='collapsed')
 
-# CSS for background and styling
+st.set_page_config(page_title="Vimal's ParaGen vr.01", page_icon='🤖', layout='centered', initial_sidebar_state='collapsed')
+
 st.markdown("""
     <style>
         .stApp {
@@ -48,13 +47,10 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-# Title in big text
-st.markdown("<h1>Vimal's ParaBOT</h1>", unsafe_allow_html=True)
-
-# Blog generation header
+header
 st.header("Generate Articles from Vimal's ParaBOT 🤖")
 
-# User input section
+
 input_text = st.text_input("Enter the Blog Topic")
 
 col1, col2 = st.columns([5, 5])
@@ -69,3 +65,5 @@ submit = st.button("Generate")
 
 if submit:
     st.write(getLLamaresponse(input_text, no_words, blog_style))
+
+st.markdown("<h1>Vimal's ParaBOT using Mistral Model</h1>", unsafe_allow_html=True)
